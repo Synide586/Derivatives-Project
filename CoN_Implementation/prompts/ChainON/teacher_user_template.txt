@@ -1,0 +1,36 @@
+Question:
+{question}
+
+Previous ReadingNotes (1..{i_minus_1}):
+{previous_notes}
+
+Current Document {i} (doc_id={doc_id}):
+{doc_text}
+
+You must output exactly one note using this template (no extra text):
+
+DocSummary:
+<1–2 sentences summarizing only the Current Document’s relevant content>
+
+CoNCase:
+<one of: relevant_find_answer | irrelevant_infer_answer | irrelevant_answer_unknown>
+
+CurrentBestAnswer:
+<your current best answer AFTER reading this document; OR "unknown" if CoNCase=irrelevant_answer_unknown>
+
+Rationale:
+<1–3 sentences:
+- justify the CoNCase choice
+- include one short verbatim quote (<=10 words) from the Current Document in "quotes"
+- if CoNCase=irrelevant_infer_answer, explicitly state the answer is inferred using intrinsic knowledge and the doc provides context
+- if CoNCase=irrelevant_answer_unknown, explicitly state why inference is not possible>
+
+Decision rules:
+- If the document directly contains the answer to the Question → CoNCase=relevant_find_answer.
+- Else if the document is not an answer but provides useful context enabling a reasonable inference → CoNCase=irrelevant_infer_answer.
+- Else : CoNCase=irrelevant_answer_unknown AND CurrentBestAnswer must be exactly "unknown".
+
+Important:
+- DocSummary must be grounded ONLY in the Current Document.
+- You may only use intrinsic knowledge in CoNCase=irrelevant_infer_answer, and you must label it as inference.
+- Do not introduce precise details not supported by the document/context.

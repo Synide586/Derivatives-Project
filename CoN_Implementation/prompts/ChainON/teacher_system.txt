@@ -1,0 +1,67 @@
+You are generating a SINGLE Chain-of-Note ReadingNote for ONE document in a multi-document reading process.
+
+Chain-of-Note (CoN) note styles (paper methodology):
+You MUST classify the CURRENT document into exactly one of these 3 CoN cases:
+(A) Relevant - Find the answer
+(B) Irrelevant (but useful context) - Infer the answer
+(C) Irrelevant (no useful context) - Answer Unknown
+
+This turn: produce ReadingNote {i} ONLY, based on:
+(a) the Question,
+(b) Previous ReadingNotes (1..i-1),
+(c) Current Document {i}.
+
+========================
+STRICT OUTPUT CONTRACT
+========================
+You MUST output exactly these fields once each (no extra headings, no extra text):
+DocSummary:
+CoNCase:
+CurrentBestAnswer:
+Rationale:
+
+CoNCase must be EXACTLY one of:
+- relevant_find_answer
+- irrelevant_infer_answer
+- irrelevant_answer_unknown
+
+========================
+GROUNDING + ALLOWED REASONING
+========================
+1. DocSummary grounding:
+- DocSummary MUST ONLY summarize the Current Document’s content.
+- Do NOT include facts from other documents in DocSummary.
+- Do NOT correct the document with outside knowledge.
+
+2. Case-specific behavior:
+(A) relevant_find_answer:
+- The Current Document directly answers the Question.
+- CurrentBestAnswer MUST be supported by the Current Document.
+- Do NOT use intrinsic knowledge to add extra facts beyond the document’s answer.
+
+(B) irrelevant_infer_answer:
+- The Current Document does NOT directly answer the Question, but provides useful context.
+- You MAY use intrinsic knowledge to infer an answer, BUT:
+  - You MUST clearly mark that the answer is inferred (not directly stated in the document).
+  - You MUST NOT invent specific factual claims that go beyond what a reasonable inference from the context supports.
+  - Prefer cautious, general inference over precise numbers/dates unless the document provides them.
+
+(C) irrelevant_answer_unknown:
+- The Current Document is irrelevant and does not provide useful context to infer the answer.
+- CurrentBestAnswer MUST be exactly: unknown
+
+3. Sequential dependence:
+- Treat Previous ReadingNotes as the belief state so far.
+- However, DO NOT use belief-update labels like confirms/refines/contradicts.
+- Your job is to choose the CoNCase for the Current Document and update CurrentBestAnswer accordingly.
+
+========================
+Rationale requirements (all cases)
+========================
+- 1–3 sentences.
+- Must justify why you chose the CoNCase.
+- Must include a short verbatim anchor quote (<= 10 words) from the Current Document in quotation marks.
+- If CoNCase=irrelevant_infer_answer, Rationale must explicitly say you are inferring using intrinsic knowledge.
+- If CoNCase=irrelevant_answer_unknown, Rationale must explicitly say why inference is not possible.
+
+Do NOT output the final answer for the whole task here. Only one ReadingNote.

@@ -1,0 +1,15 @@
+REPAIR MODE (GROUNDING):
+Your previous note appears insufficiently grounded in the Current Document.
+
+Rewrite the note so it is clearly grounded in the Current Document.
+Requirements:
+- Use the same 4-field template exactly once each:
+  DocSummary:
+  CoNCase:
+  CurrentBestAnswer:
+  Rationale:
+- In Rationale, include ONE short verbatim anchor phrase copied from the Current Document (<= 8 words) in quotes.
+- Do not introduce facts not present in the Current Document.
+- If CoNCase is irrelevant_answer_unknown, CurrentBestAnswer must be exactly: unknown
+
+Return only the corrected note.

@@ -1,0 +1,37 @@
+Question:
+{question}
+
+Documents (in order). Each document begins with its doc_id:
+{docs_block}
+
+Critical reminders:
+- Produce ReadingNote 1..ReadingNote {k} (one per document, in order).
+- Then produce FinalAnswer with 2–4 sentences.
+- Every FinalAnswer sentence MUST end with citations in the exact format [d1][d2]... (NO spaces).
+- If you cannot answer from the documents, output exactly:
+Unknown based on provided documents.
+(with no citations)
+
+Output EXACTLY in this segmented format:
+
+ReadingNote 1:
+DocSummary:
+CoNCase:
+CurrentBestAnswer:
+Rationale:
+
+ReadingNote 2:
+DocSummary:
+CoNCase:
+CurrentBestAnswer:
+Rationale:
+
+...
+
+ReadingNote {k}:
+DocSummary:
+CoNCase:
+CurrentBestAnswer:
+Rationale:
+
+FinalAnswer:

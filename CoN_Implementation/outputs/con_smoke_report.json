@@ -1,0 +1,12 @@
+{
+  "format_error_rate": 0.0,
+  "regen_rate": 0.0,
+  "overlap_fail_rate": 0.0,
+  "distribution_con_case": {
+    "relevant_find_answer": 1,
+    "irrelevant_infer_answer": 1
+  },
+  "avg_note_length_tokens": 100.5,
+  "n_total": 1,
+  "n_failed": 0
+}

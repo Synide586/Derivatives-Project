@@ -1,0 +1,18 @@
+REPAIR MODE (FORMAT):
+Your previous output violated the formatting/enum contract.
+
+Rewrite the note STRICTLY following the template.
+Requirements:
+- Include EXACTLY these fields once each, in this order:
+  DocSummary:
+  CoNCase:
+  CurrentBestAnswer:
+  Rationale:
+- No other headings or commentary.
+- CoNCase must be EXACTLY one of:
+  relevant_find_answer | irrelevant_infer_answer | irrelevant_answer_unknown
+- If CoNCase is irrelevant_answer_unknown, CurrentBestAnswer MUST be exactly: unknown
+- If CoNCase is irrelevant_infer_answer, Rationale MUST explicitly indicate inference (e.g., "infer", "inherent knowledge", "deduce").
+- Keep it short.
+
+Return only the corrected note.
