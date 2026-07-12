@@ -1,7 +1,7 @@
 
 A personal-use CLI client to trade cryptocurrency using the Deribit Exchange.
 
-<!-- GETTING STARTED -->
+<!--- GETTING STARTED --->
 ## Application Setup
 
 This is a tutorial to get a local copy up and running follow these simple steps.
